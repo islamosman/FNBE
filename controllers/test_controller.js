@@ -13,7 +13,7 @@ module.exports = (app) => {
         TestModel.deleteOne().then(data => {
         newObj.save().then(data2=>{
             TestModel.findOne().then(data=>{
-                res.status(HTTPStatus.OK).send(data);
+                res.status(HTTPStatus.OK).send(data.param1);
             });
 
         })    
