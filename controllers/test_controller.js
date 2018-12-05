@@ -27,4 +27,19 @@ module.exports = (app) => {
             res.status(HTTPStatus.OK).send(data.param1);
         });
     });
+
+    app.get('/SetDatatest', (req, res, next) => {
+        var newObj = new TestModel();
+        newObj.param1 = req.query.rvalue;
+       
+        TestModel.deleteOne().then(data => {
+        newObj.save().then(data2=>{
+            TestModel.findOne().then(data=>{
+                res.status(HTTPStatus.OK).send(data.param1);
+            });
+
+        })    
+        });
+
+    });
 }
